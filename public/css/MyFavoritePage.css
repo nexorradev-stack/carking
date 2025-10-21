@@ -1,0 +1,333 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Manrope:wght@200..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Manrope:wght@200..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Manrope:wght@200..800&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+@media screen and (min-width: 768px) {
+    .MyFavoritePage #favorites-container{
+        padding: 32px 32px 10px 32px;
+        font-family: 'Poppins', sans-serif;
+        background-color: #F5F6FA;
+    }
+    #top-bar{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+    }
+    #top-bar-heading{
+        width: 50%;
+    }
+    #top-bar-Search{
+        display: flex;
+        justify-content: end;
+        width: 50%;
+    }
+    #top-bar-listing{
+      
+         display: flex;
+                justify-content: space-between;
+                align-items: center;
+                width: 100%;
+                margin-bottom: 5px;
+    }
+    #search-bar {
+        width: 50%;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding-left: 10px;
+        background-color:#f1f1f1;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+    }
+    #input {
+        padding: 12px;
+        width: 100%;
+        background-color:#f1f1f1;
+        border: none;
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
+    }
+}
+@media screen and (max-width: 767px) {
+    .MyFavoritePage #favorites-container{
+        padding: 10px 5px;
+        font-family: 'Poppins', sans-serif;
+        background-color: #F5F6FA;
+    }
+    #top-bar{
+        display: flex;
+        justify-content: space-between;
+    }
+    #search-bar {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding-left: 10px;
+        background-color:#f1f1f1;
+        border: 1px solid #ddd;
+        width: 50%;
+        border-radius: 10px;
+        margin-bottom: 0px;
+    }
+    #input {
+        padding: 8px;
+        width: 100%;
+        border: none;
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
+        background-color:#f1f1f1;
+    }
+    #top-bar-heading{
+        display: none;
+    }
+}
+.MyFavoritePage #favorites-container h2{
+    font-family: 'Manrope', sans-serif;
+    font-weight: 800;
+    font-size: 28px;
+}
+.MyFavoritePage #favorites-content{
+    background-color: #fff;
+    border-radius: 16px;
+    padding: 5px;
+    padding-bottom: 40px;
+    /* max-height: 799px; */
+}
+.MyFavoritePage #top-bar{
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    justify-content: flex-end;
+    margin-bottom: 24px;
+}
+.MyFavoritePage #search-bar {
+    width: 258px;
+    position: relative;
+}
+
+.MyFavoritePage #search-icon {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+}
+.MyFavoritePage #input {
+    border: none;
+    background-color: #F5F6FA;
+    border-radius: 8px;
+    height: 44px;
+    padding-left: 40px;
+    width: 100%;
+    font-size: 14px;
+}
+
+.MyFavoritePage .dropdown {
+    position: relative;
+    width: 114px;
+    cursor: pointer;
+    font-size: 16px;
+    color: #A4A7AD;
+}
+
+
+.MyFavoritePage .dropdown-btn {
+display: flex;
+gap:12px;
+align-items: center;
+background-color: #F5F6FA;
+padding: 11px 10px;
+border-radius: 8px;
+}
+
+/* Dropdown options styling */
+.MyFavoritePage .dropdown-options {
+position: absolute;
+top: 100%;
+left: 0;
+width: 100%;
+margin: 0;
+padding: 0;
+list-style: none;
+background-color: #F5F6FA;
+border: 1px solid #ccc;
+border-radius: 8px;
+display: none; /* Hidden by default */
+z-index: 10;
+}
+
+/* Each option styling */
+.MyFavoritePage .dropdown-options li {
+padding: 10px;
+color: #A4A7AD;
+}
+
+.MyFavoritePage .dropdown-options li:hover {
+background-color: #e0e0e0; /* Highlight on hover */
+}
+
+/* Active state for showing options */
+.MyFavoritePage .dropdown.active .dropdown-options {
+display: block;
+}
+
+/* #filter {
+    height: 44px;
+    display: flex;
+    position: relative;
+}
+
+#dropdown-icon {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    left: 84px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+#filter-select {
+    width: 100%;
+    min-width: 114px;
+    height: 100%;
+    border: none;
+    border-radius: 8px;
+    background-color: #F5F6FA;
+    color: #A4A7AD;
+    padding: 11px 20px;
+    padding-right: 30px;
+    font-size: 16px;
+    appearance: none;
+} */
+/* #header{
+    width: 100%;
+    border-bottom: 1px solid #F2F2F2;
+    padding-bottom: 22px;
+    text-align: left;
+}
+#th1, #th4, #th6{
+    padding-left: 24px;
+}
+#th2, #th5{
+    padding-left: 36px;
+}
+tr{
+    max-height: 68px;
+}
+.image{
+    padding-left: 24px;
+}
+.info{
+    max-width: 291px;
+    padding-left: 36px;
+} */
+/* General table styling */
+.MyFavoritePage table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0; /* Adds spacing above and below the table */
+}
+
+.MyFavoritePage th, td {
+    font-size: 16px;
+    border-bottom: 1px solid #F2F2F2;
+    padding: 12px 16px; /* Adds padding for breathing space */
+    text-align: left; /* Aligns text to the left */
+    vertical-align: middle; /* Centers content vertically */
+    min-height: 82px;
+}
+
+/* Header styling */
+.MyFavoritePage th {
+    font-weight: 600;
+    /* background-color: #f2f2f2; Light gray background for header */
+    text-align: left; /* Aligns header text to the left */
+}
+.MyFavoritePage tbody{
+    color: #8C8994;
+}
+/* Cell styling for specific columns
+.image img, .status img, .action img{
+    width: 100%; Sets a fixed size for images in these columns
+    height: auto;
+}*/
+.MyFavoritePage td.date-posted-td {
+    min-width: 170px;
+}
+.MyFavoritePage .date-posted img {
+    margin-right: 8px;
+    vertical-align: middle;
+
+}
+.MyFavoritePage .date-posted p{
+    margin: 0;
+}
+
+.MyFavoritePage .info {
+
+    line-height: 1;
+}
+.MyFavoritePage .offers{
+    vertical-align: center;
+}
+.MyFavoritePage .offers div{
+    width: 140px;
+    display: flex;
+    gap: 8px;
+}
+.MyFavoritePage .offers div img{
+    width: 20px;
+    height: 20px;
+}
+.MyFavoritePage .offers div p{
+    line-height: 20px;
+}
+.MyFavoritePage .msgs-container{
+    margin-top: 6px;
+}
+.MyFavoritePage .view {
+    text-align: center; /* Centers the view count */
+}
+
+.MyFavoritePage .action{
+    text-align: right;
+}
+
+.MyFavoritePage #pagination{
+    display: flex;
+    justify-content: space-between;
+    font-family: 'Inter', sans-serif;
+}
+.MyFavoritePage #previous-next{
+    gap: 12px;
+}
+.MyFavoritePage .pagination-btn{
+    outline: none;
+    border: none;
+    background-color: #fff;
+    color: #000;
+    height: 36px;
+    padding-left: 14px;padding-right: 14px;
+    border-radius: 8px;
+    margin-top: 17px;
+    color: #344054;
+    font-weight: 600;
+    border: 1px solid #D0D5DD;
+    cursor: pointer;
+}
+.MyFavoritePage #page-status{
+    height: 40px;
+    margin-top: 15px;
+    background-color: #fff;
+    color: #000;
+    padding: 10px;
+    color: #344054;
+    font-size: 14px;
+    border-radius: 12px;
+}

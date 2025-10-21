@@ -1,0 +1,119 @@
+.blog_container{
+  padding:0px;
+  width: 100%;
+  margin: auto;
+}
+.blog_container-heading{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.blog_container-heading h4{
+    font-size: 16px;
+  }
+.blog-card-img {
+    min-width: 100%;
+    max-width: 100%;
+}
+.blog_container h4{
+  font-size: 24px;
+  width: 80%;
+}
+.card-body a{
+    border: 1px solid black !important;
+    background-color: black !important;
+    color: white !important;
+    width: 25%;
+    padding: 10px 0 10px 0;
+    text-decoration: none;
+}
+.blog_container div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.show-brand-button{
+    display: flex;
+    justify-content: end;
+    align-items: end;
+}
+.show-brand-button h6{
+    display: inline;
+    cursor: pointer;
+    font-weight: 900;
+}
+.blog_container p{
+  font-size: 14px;
+  color: #767676;
+}
+.blog_container a{
+  padding: 5px 4px 5px 4px;
+  border-radius: 8px;
+  width: 50%;
+  border: 1px solid black;
+  font-size: 14px;
+}
+.blog_side h5{
+  font-size: 18px;
+  width: 80%;
+}
+.blog_side a{
+  padding: 2px 2px 2px 2px;
+  border-radius: 8px;
+  width: 25%;
+  border: 1px solid black;
+  font-size: 14px;
+}
+.blog_container a:hover{
+  border: 1px solid black !important;
+  background-color: white !important;
+  color: black !important;
+}
+
+.blog-box {
+    border-width: 1px;
+    border-color: rgb(218, 218, 218);
+    background-color: white;
+    border: 20px;
+}
+
+@media (max-width:999px) {
+  .blog_container{
+    width: 100%;
+    margin: auto;
+  }
+  .blog_container a{
+    border: 1px solid black !important;
+    background-color: black !important;
+    color: white !important;
+    width: 25%;
+    padding: 10px 0 10px 0;
+  }
+  .blog_side img{
+    height: 8rem;width: 10rem;
+  }
+  .blog_side a{
+   width: 20%;
+  }
+  .blog_side .card-body{
+    padding-left: 0%;
+  }
+
+}
+
+@media (max-width:576px){
+  .blog_container{
+    width: 85%;
+  }
+  .blog_container a{
+    width: 40%;
+    padding: 10px 0 10px 0;
+  }
+  .blog_side a{
+    width: 30%;
+   }
+   .blog_container .h5{
+   border: 5px solid white;
+   background-color: black;
+   }
+}

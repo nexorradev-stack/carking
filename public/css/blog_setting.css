@@ -1,0 +1,221 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Manrope:wght@200..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Manrope:wght@200..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Manrope:wght@200..800&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+#blogs-container{
+    padding: 32px 32px 10px 32px;
+    font-family: 'Poppins', sans-serif;
+    /* max-width: 1124px; */
+    background-color: #F5F6FA;
+}
+#blogs-container h2{
+    font-family: 'Manrope', sans-serif;
+    font-weight: 800;
+    font-size: 28px;
+    margin-bottom: 24px;
+}
+#blogs-container #blogs-content{
+    background-color: #fff;
+    border-radius: 16px;
+    padding: 24px;
+    padding-bottom: 40px;
+    height: 746px;
+}
+#blogs-container #blogs-content #top-bar{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+}
+#blogs-container #blogs-content #top-bar #search{
+    display: flex;
+    gap: 16px;
+}
+#blogs-container #blogs-content #top-bar #search-bar {
+    width: 258px;
+    position: relative;
+}
+
+#blogs-container #blogs-content #top-bar #search-bar #search-icon {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-60%);
+    pointer-events: none;
+}
+
+#blogs-container #input {
+    border: none;
+    background-color: #F5F6FA;
+    border-radius: 8px;
+    height: 44px;
+    padding-left: 40px;
+    width: 100%;
+    font-size: 14px;
+}
+
+#blogs-container .dropdown {
+    position: relative;
+    width: 114px;
+    cursor: pointer;
+    font-size: 16px;
+    color: #A4A7AD;
+}
+
+
+#blogs-container .dropdown-btn {
+display: flex;
+gap:12px;
+align-items: center;
+background-color: #F5F6FA;
+padding: 11px 10px;
+border-radius: 8px;
+}
+
+#blogs-container .dropdown-options {
+position: absolute;
+top: 100%;
+left: 0;
+width: 100%;
+margin: 0;
+padding: 0;
+list-style: none;
+background-color: #F5F6FA;
+border: 1px solid #ccc;
+border-radius: 8px;
+display: none;
+z-index: 10;
+}
+
+
+#blogs-container .dropdown-options li {
+padding: 10px;
+color: #A4A7AD;
+}
+
+#blogs-container .dropdown-options li:hover {
+background-color: #e0e0e0;
+}
+
+
+#blogs-container .dropdown.active .dropdown-options {
+display: block;
+}
+
+#blogs-container #add-blog {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 169px;
+    padding: 16px 28.5px;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    gap: 12px;
+    border-radius: 12px;
+}
+
+#blogs-container #add-blog #add-icon {
+    width: 16px;
+    height: 16px;
+}
+
+#blogs-container #add-blog-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 16px;
+    font-family: Arial, sans-serif;
+    cursor: pointer;
+}
+
+#blogs-container table {
+    max-width: 1076px;
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+#blogs-container th, td {
+    font-size: 16px;
+    border-bottom: 1px solid #F2F2F2;
+    padding: 12px 16px;
+    text-align: left;
+    vertical-align: middle;
+    min-height: 82px;
+}
+
+#blogs-container th {
+    font-weight: 600;
+    text-align: left;
+}
+#blogs-container tbody{
+    color: #8C8994;
+}
+
+#blogs-container td.date-posted {
+    display: flex;
+    align-items: center;
+    min-width: 230px;
+}
+#blogs-container .serial{
+    text-align: center;
+}
+#blogs-container .date-posted img {
+    margin-right: 8px;
+    vertical-align: middle;
+
+}
+#blogs-container .date-posted p{
+    margin: 0;
+}
+
+#blogs-container .comments{
+    text-align: center;
+}
+#blogs-container .view {
+    text-align: center;
+}
+
+#blogs-container .action{
+    text-align: right;
+}
+
+#blogs-container #pagination{
+    display: flex;
+    justify-content: space-between;
+    font-family: 'Inter', sans-serif;
+}
+#blogs-container #previous-next{
+    gap: 12px;
+}
+#blogs-container .pagination-btn{
+    outline: none;
+    border: none;
+    background-color: #fff;
+    color: #000;
+    height: 36px;
+    padding-left: 14px;padding-right: 14px;
+    border-radius: 8px;
+    margin-top: 17px;
+    color: #344054;
+    font-weight: 600;
+    border: 1px solid #D0D5DD;
+    cursor: pointer;
+}
+#blogs-container #page-status{
+    height: 40px;
+    margin-top: 15px;
+    background-color: #fff;
+    color: #000;
+    padding: 10px;
+    color: #344054;
+    font-size: 14px;
+    border-radius: 12px;
+}

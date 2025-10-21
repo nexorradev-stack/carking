@@ -1,0 +1,419 @@
+
+<?php
+namespace App\Console\Commands;
+use Illuminate\Console\Command;
+use Spatie\Sitemap\Sitemap;
+use Spatie\Sitemap\Tags\Url;
+use App\Models\{Blog, Car, ForumPost, Advert, Event, User, Business};
+use Illuminate\Support\Facades\DB;
+
+class GenerateSitemap extends Command
+{
+    protected $signature = 'sitemap:generate {--limit=5000 : Limit number of dynamic URLs to prevent memory issues}';
+    protected $description = 'Generate the sitemap for the website';
+
+    public function handle()
+    {
+        $sitemap = Sitemap::create();
+        $baseUrl = config('app.url');
+        $limit = (int) $this->option('limit');
+
+        $staticPages = [
+            ['url' => '', 'priority' => 1.0],
+            ['url' => 'blogs', 'priority' => 0.9],
+            ['url' => 'faqs', 'priority' => 0.7],
+            ['url' => 'contactus', 'priority' => 0.6],
+            ['url' => 'forum', 'priority' => 0.5],
+            ['url' => 'privacy-policy', 'priority' => 0.4],
+            ['url' => 'terms-and-conditions', 'priority' => 0.3],
+            ['url' => 'refund-policy', 'priority' => 0.2],
+            ['url' => 'pricing', 'priority' => 0.1],
+        ];
+
+        foreach ($staticPages as $page) {
+            $sitemap->add(
+                Url::create($baseUrl . $page['url'])
+                    ->setPriority($page['priority'])
+                    ->setChangeFrequency('weekly')
+                    ->setLastModificationDate(now())
+            );
+        }
+
+        // Blogs
+        $blogs = Blog::all();
+        foreach ($blogs as $blog) {
+            $sitemap->add(Url::create($baseUrl . "/blog/{$blog->slug}")
+                ->setLastModificationDate($blog->updated_at)
+                ->setPriority(0.8)
+                ->setChangeFrequency('weekly'));
+        }
+
+        // Cars
+        $cars = Car::all();
+        foreach ($cars as $car) {
+            $sitemap->add(Url::create($baseUrl . "/car-for-sale/{$car->slug}")
+                ->setLastModificationDate($car->updated_at)
+                ->setPriority(0.7)
+                ->setChangeFrequency('weekly'));
+        }
+
+        // Forum Posts
+        $forumPosts = ForumPost::all();
+        foreach ($forumPosts as $post) {
+            $sitemap->add(Url::create($baseUrl . "/forum/{$post->slug}")
+                ->setLastModificationDate($post->updated_at)
+                ->setPriority(0.7)
+                ->setChangeFrequency('weekly'));
+        }
+
+        // Events
+        $eventPosts = Event::all();
+        foreach ($eventPosts as $post) {
+            $sitemap->add(Url::create($baseUrl . "/event-details/{$post->slug}")
+                ->setLastModificationDate($post->updated_at)
+                ->setPriority(0.7)
+                ->setChangeFrequency('weekly'));
+        }
+
+        // Dealer Profiles
+        $dealerprofiles = User::where('role', 'car_dealer')->get();
+        foreach ($dealerprofiles as $profile) {
+            $sitemap->add(Url::create($baseUrl . "/dealer-profile/{$profile->slug}")
+                ->setLastModificationDate(now())
+                ->setPriority(0.7)
+                ->setChangeFrequency('weekly'));
+        }
+
+        // Local business
+        $businessess = Business::all();
+        foreach ($businessess as $business) {
+            $sitemap->add(Url::create($baseUrl . "/business-listings/{$business->businessLocation->slug}/{$business->businessType->slug}/{$business->slug}")
+                ->setLastModificationDate(now())
+                ->setPriority(0.7)
+                ->setChangeFrequency('weekly'));
+        }
+
+        // SEO Dynamic Pages
+        $this->info('Generating dynamic SEO URLs...');
+        $this->generateDynamicSeoUrls($sitemap, $baseUrl, $limit);
+
+        $sitemap->writeToFile(public_path('sitemap.xml'));
+        $this->info('Sitemap generated successfully!');
+    }
+
+    private function generateDynamicSeoUrls($sitemap, $baseUrl, $limit)
+    {
+        $urlCount = 0;
+        $duplicateCheck = [];
+
+        // Get active data only (matching your SeoController logic)
+        $makes = Car::select('make')
+            ->leftJoin('adverts', 'cars.advert_id', '=', 'adverts.advert_id')
+            ->where('adverts.status', 'active')
+            ->whereNotNull('make')
+            ->groupBy('make')
+            ->orderBy('make')
+            ->pluck('make');
+
+        $models = Car::select('model')
+            ->leftJoin('adverts', 'cars.advert_id', '=', 'adverts.advert_id')
+            ->where('adverts.status', 'active')
+            ->whereNotNull('model')
+            ->groupBy('model')
+            ->orderBy('model')
+            ->pluck('model');
+
+        $locations = User::select('location')
+            ->whereNotNull('location')
+            ->groupBy('location')
+            ->orderBy('location')
+            ->pluck('location');
+
+        $fuelTypes = Car::select('fuel_type')
+            ->leftJoin('adverts', 'cars.advert_id', '=', 'adverts.advert_id')
+            ->where('adverts.status', 'active')
+            ->whereNotNull('fuel_type')
+            ->groupBy('fuel_type')
+            ->pluck('fuel_type');
+
+        $transmissionTypes = Car::select('transmission_type')
+            ->leftJoin('adverts', 'cars.advert_id', '=', 'adverts.advert_id')
+            ->where('adverts.status', 'active')
+            ->whereNotNull('transmission_type')
+            ->groupBy('transmission_type')
+            ->pluck('transmission_type');
+
+        $bodyTypes = Car::select('body_type')
+            ->leftJoin('adverts', 'cars.advert_id', '=', 'adverts.advert_id')
+            ->where('adverts.status', 'active')
+            ->whereNotNull('body_type')
+            ->groupBy('body_type')
+            ->pluck('body_type');
+
+        // Main cars page
+        $this->addUrlIfUnique($sitemap, $baseUrl, 'cars-for-sale', $duplicateCheck, $urlCount, 0.9);
+
+        // 1. Location-based URLs
+        foreach ($locations as $location) {
+            if ($urlCount >= $limit) break;
+            $url = 'cars-for-sale/' . $this->slugify($location);
+            $this->addUrlIfUnique($sitemap, $baseUrl, $url, $duplicateCheck, $urlCount, 0.8);
+        }
+
+        // 2. Make + Location combinations
+        foreach ($makes as $make) {
+            foreach ($locations as $location) {
+                if ($urlCount >= $limit) break 2;
+                $url = 'cars-for-sale/' . $this->slugify($make) . '/' . $this->slugify($location);
+                $this->addUrlIfUnique($sitemap, $baseUrl, $url, $duplicateCheck, $urlCount, 0.7);
+            }
+        }
+
+        // 3. Fuel Type + Location combinations
+        foreach ($fuelTypes as $fuelType) {
+            foreach ($locations as $location) {
+                if ($urlCount >= $limit) break 2;
+                $url = 'cars-for-sale/fuel/' . $this->slugify($fuelType) . '/' . $this->slugify($location);
+                $this->addUrlIfUnique($sitemap, $baseUrl, $url, $duplicateCheck, $urlCount, 0.6);
+            }
+        }
+
+        // 4. Transmission + Location combinations
+        foreach ($transmissionTypes as $transmissionType) {
+            foreach ($locations as $location) {
+                if ($urlCount >= $limit) break 2;
+                $url = 'cars-for-sale/transmission/' . $this->slugify($transmissionType) . '/' . $this->slugify($location);
+                $this->addUrlIfUnique($sitemap, $baseUrl, $url, $duplicateCheck, $urlCount, 0.6);
+            }
+        }
+
+        // 5. Body Type + Location combinations
+        foreach ($bodyTypes as $bodyType) {
+            foreach ($locations as $location) {
+                if ($urlCount >= $limit) break 2;
+                $url = 'cars-for-sale/body/' . $this->slugify($bodyType) . '/' . $this->slugify($location);
+                $this->addUrlIfUnique($sitemap, $baseUrl, $url, $duplicateCheck, $urlCount, 0.6);
+            }
+        }
+
+        // 6. Make + Model + Location combinations (high priority)
+        foreach ($makes as $make) {
+            // Get models for this specific make
+            $makeModels = Car::select('model')
+                ->leftJoin('adverts', 'cars.advert_id', '=', 'adverts.advert_id')
+                ->where('adverts.status', 'active')
+                ->whereNotNull('model')
+                ->groupBy('model')
+                ->pluck('model');
+
+            foreach ($makeModels as $model) {
+                foreach ($locations as $location) {
+                    if ($urlCount >= $limit) break 3;
+                    $url = 'cars-for-sale/' . $this->slugify($make) . '/' . $this->slugify($model) . '/' . $this->slugify($location);
+                    $this->addUrlIfUnique($sitemap, $baseUrl, $url, $duplicateCheck, $urlCount, 0.8);
+                }
+            }
+        }
+
+        // 7. Popular years + Make + Location combinations
+        $popularYears = [2020, 2021, 2022, 2023, 2024];
+        foreach ($popularYears as $year) {
+            foreach ($makes as $make) {
+                foreach ($locations as $location) {
+                    if ($urlCount >= $limit) break 3;
+                    $url = 'cars-for-sale/' . $this->slugify($make) . '/year-' . $year . '/' . $this->slugify($location);
+                    $this->addUrlIfUnique($sitemap, $baseUrl, $url, $duplicateCheck, $urlCount, 0.5);
+                }
+            }
+        }
+
+        // 8. Price range combinations with ALL makes and locations
+        // Generate price ranges in multiples of 5000 up to 100000 (1 lac)
+        $priceRanges = [];
+        for ($price = 5000; $price <= 100000; $price += 5000) {
+            $priceRanges[] = $price;
+        }
+        
+        foreach ($priceRanges as $price) {
+            foreach ($makes as $make) {
+                if ($urlCount >= $limit) break 2;
+                $url = 'cars-for-sale/' . $this->slugify($make) . '/under-' . $price;
+                $this->addUrlIfUnique($sitemap, $baseUrl, $url, $duplicateCheck, $urlCount, 0.5);
+            }
+        }
+
+        // 9. Price range + Location combinations
+        foreach ($priceRanges as $price) {
+            foreach ($locations as $location) {
+                if ($urlCount >= $limit) break 2;
+                $url = 'cars-for-sale/under-' . $price . '/' . $this->slugify($location);
+                $this->addUrlIfUnique($sitemap, $baseUrl, $url, $duplicateCheck, $urlCount, 0.5);
+            }
+        }
+
+        // 10. Make + Price + Location combinations (most specific)
+        foreach ($makes as $make) {
+            foreach ($priceRanges as $price) {
+                foreach ($locations as $location) {
+                    if ($urlCount >= $limit) break 3;
+                    $url = 'cars-for-sale/' . $this->slugify($make) . '/under-' . $price . '/' . $this->slugify($location);
+                    $this->addUrlIfUnique($sitemap, $baseUrl, $url, $duplicateCheck, $urlCount, 0.6);
+                }
+            }
+        }
+
+        // 11. Fuel Type + Make combinations
+        foreach ($fuelTypes as $fuelType) {
+            foreach ($makes as $make) {
+                if ($urlCount >= $limit) break 2;
+                $url = 'cars-for-sale/' . $this->slugify($make) . '/fuel-' . $this->slugify($fuelType);
+                $this->addUrlIfUnique($sitemap, $baseUrl, $url, $duplicateCheck, $urlCount, 0.5);
+            }
+        }
+
+        // 12. Transmission + Make combinations
+        foreach ($transmissionTypes as $transmissionType) {
+            foreach ($makes as $make) {
+                if ($urlCount >= $limit) break 2;
+                $url = 'cars-for-sale/' . $this->slugify($make) . '/transmission-' . $this->slugify($transmissionType);
+                $this->addUrlIfUnique($sitemap, $baseUrl, $url, $duplicateCheck, $urlCount, 0.5);
+            }
+        }
+
+        // 13. Body Type + Make combinations
+        foreach ($bodyTypes as $bodyType) {
+            foreach ($makes as $make) {
+                if ($urlCount >= $limit) break 2;
+                $url = 'cars-for-sale/' . $this->slugify($make) . '/body-' . $this->slugify($bodyType);
+                $this->addUrlIfUnique($sitemap, $baseUrl, $url, $duplicateCheck, $urlCount, 0.5);
+            }
+        }
+
+        $this->info("Generated {$urlCount} dynamic SEO URLs");
+    }
+
+    private function addUrlIfUnique($sitemap, $baseUrl, $url, &$duplicateCheck, &$urlCount, $priority)
+    {
+        if (!in_array($url, $duplicateCheck)) {
+            $duplicateCheck[] = $url;
+            $sitemap->add(
+                Url::create($baseUrl  . $url)
+                    ->setPriority($priority)
+                    ->setChangeFrequency('weekly')
+                    ->setLastModificationDate(now())
+            );
+            $urlCount++;
+        }
+    }
+
+    private function slugify($string)
+    {
+        return strtolower(str_replace([' ', '&', '+'], ['-', 'and', 'plus'], trim($string)));
+    }
+}
+
+
+
+
+<?php
+
+namespace App\Console\Commands;
+
+use Illuminate\Console\Command;
+use Spatie\Sitemap\Sitemap;
+use Spatie\Sitemap\Tags\Url;
+use App\Models\{Blog, Car, ForumPost, Advert, Event,User,Business};
+
+class GenerateSitemap extends Command
+{
+    protected $signature = 'sitemap:generate';
+    protected $description = 'Generate the sitemap for the website';
+
+    public function handle()
+{
+    $sitemap = Sitemap::create();
+
+    $baseUrl = config('app.url');
+    $staticPages = [
+        ['url' => '', 'priority' => 1.0],
+        ['url' => 'blogs', 'priority' => 0.9],
+        ['url' => 'faqs', 'priority' => 0.7],
+        ['url' => 'contactus', 'priority' => 0.6],
+        ['url' => 'forum', 'priority' => 0.5],
+        ['url' => 'privacy-policy', 'priority' => 0.4],
+        ['url' => 'terms-and-conditions', 'priority' => 0.3],
+        ['url' => 'refund-policy', 'priority' => 0.2],
+        ['url' => 'pricing', 'priority' => 0.1],
+    ];
+
+    foreach ($staticPages as $page) {
+    $sitemap->add(
+        Url::create($baseUrl . $page['url'])
+            ->setPriority($page['priority'])
+            ->setChangeFrequency('weekly')
+            ->setLastModificationDate(now()) 
+    );
+}
+
+    // Blogs
+    $blogs = Blog::all();
+    foreach ($blogs as $blog) {
+        $sitemap->add(Url::create($baseUrl . "blog/{$blog->slug}")
+            ->setLastModificationDate($blog->updated_at)
+            ->setPriority(0.8)
+            ->setChangeFrequency('weekly'));
+    }
+
+    // Cars
+    $cars = Car::all();
+    foreach ($cars as $car) {
+        $sitemap->add(Url::create($baseUrl . "car-for-sale/{$car->slug}")
+            ->setLastModificationDate($car->updated_at)
+            ->setPriority(0.7)
+            ->setChangeFrequency('weekly'));
+    }
+
+    // Forum Posts
+    $forumPosts = ForumPost::all();
+    foreach ($forumPosts as $post) {
+        $sitemap->add(Url::create($baseUrl . "forum/{$post->slug}")
+            ->setLastModificationDate($post->updated_at)
+            ->setPriority(0.7)
+            ->setChangeFrequency('weekly'));
+    }
+
+    // Events
+    $eventPosts = Event::all();
+    foreach ($eventPosts as $post) {
+        $sitemap->add(Url::create($baseUrl . "event-details/{$post->slug}")
+            ->setLastModificationDate($post->updated_at)
+            ->setPriority(0.7)
+            ->setChangeFrequency('weekly'));
+    }
+
+    // Dealer Profiles
+    $dealerprofiles = User::where('role', 'car_dealer')->get();
+    foreach ($dealerprofiles as $profile) {
+        $sitemap->add(Url::create($baseUrl . "dealer-profile/{$profile->slug}")
+            ->setLastModificationDate(now())
+            ->setPriority(0.7)
+            ->setChangeFrequency('weekly'));
+    }
+    //local business
+    $businessess = Business::all();
+    foreach ($businessess as $business) {
+        $sitemap->add(Url::create($baseUrl . "business-listings/{$business->businessLocation->slug}/{$business->businessType->slug}/{$business->slug}")
+            ->setLastModificationDate(now())
+            ->setPriority(0.7)
+            ->setChangeFrequency('weekly'));
+    }
+
+    //seo dynamic pages below
+
+    $sitemap->writeToFile(public_path('sitemap.xml'));
+
+    $this->info('Sitemap generated successfully!');
+}
+}
+
+

@@ -1,0 +1,244 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body #login-body{
+
+    font-family: 'Manrope', sans-serif;
+}
+
+/* Main Container CSS */
+#login-body {
+
+    display: flex;
+    align-items: center;
+
+}
+
+/* Making sure the Image container and Image take up whole available parent height */
+#login-body .bg-img img, .bg-img {
+    height: 130vh;
+}
+
+/* Login Container CSS */
+#login-body #login-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #fff;
+    max-width: 400px;
+    margin: 200px auto auto auto;
+}
+/* For: 'Log in' */
+#login-body #login-section h1 {
+    font-size: 32px;
+    margin-bottom: 12px;
+}
+/* For: Fill in your email and password*/
+#login-body #login-section p#h1-subtext {
+    font-size: 16px;
+    color: #A7A7AF;
+    margin-bottom: 32px;
+}
+/* Input Section Properties */
+#login-body #login-section input {
+    border: 2px solid #F2F2F2;
+    width: 100%;
+    padding: 16px;
+    height: 64px;
+    font-size: 18px;
+    border-radius: 8px;
+    margin-bottom: 16px;
+}
+/* Input field's placeholder text properties */
+#login-body #login-section input::placeholder {
+    color: #A7A7AF;
+}
+
+/* Eye Icon CSS */
+/* Container for the password input and the eye icon */
+/* .password-container {
+    position: relative;
+}
+
+#passBox {
+    width: 100%;
+    padding-right: 50px; Make space for the eye icon
+}
+
+
+#pass-eye {
+    position: absolute;
+    right: 16px;
+    top: 20px;
+    /* transform: translateY(-50%);
+    cursor: pointer;
+    height: 24px;
+    width: 24px;
+} */
+
+/* Remember Me and Forgot Password CSS */
+#login-body .under-inputs {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#login-body .remember-me {
+    display: flex;
+    align-items: center;
+}
+
+#login-body .remember-me p {
+    margin-left: 8px;
+    color: #A7A7AF;
+}
+
+#login-body .remember-me img:hover{
+    cursor: pointer;
+}
+#login-body .forgot-password {
+    cursor: pointer;
+}
+#login-body .forgot-password a{
+    text-decoration: none;
+    color: #000;
+}
+#login-body .forgot-password:hover{
+    text-decoration: underline;
+}
+/* ------------------------- */
+
+
+#login-body .or{
+    margin: 20px auto;
+    text-align: center;
+    color: #A7A7AF;
+}
+
+/* For: Login with google and Facebook*/
+#login-body #login-google{
+    border: 2px solid #F2F2F2;
+    padding: 6px 42px;
+    border-radius: 12px;
+    display: flex;
+    width: 100%;
+    align-items: center;
+    gap:44px;
+    margin-bottom: 16px;
+    cursor: pointer;
+}
+#login-body #login-fb{
+    border: 2px solid #F2F2F2;
+    padding: 6px 42px;
+    border-radius: 12px;
+    display: flex;
+    width: 100%;
+    align-items: center;
+    gap:44px;
+    margin-bottom: 16px;
+    cursor: pointer;
+}
+
+/* Confirm Button */
+#login-body button{
+    width: 100%;
+    border-radius: 12px;
+    border: none;
+    color: #fff;
+    background-color: #000;
+    padding: 8px 0;
+    font-size: 18px;
+    cursor: pointer;
+    margin-top: 8px;
+}
+
+/* For: Don't have an account? Sign up*/
+#login-body #signup-text {
+    margin-top: 20px;
+    color: #A7A7AF;
+    font-size: 16px;
+}
+
+#login-body #signup-text a {
+    color: #000;
+    text-decoration: none;
+}
+
+#login-body #signup-text a:hover {
+    text-decoration: underline;
+}
+/* --------------------------------- */
+
+/* Responsiveness */
+@media (max-width:1024px) {
+    #login-body .bg-img{
+        width: 482px;
+    }
+    #login-body .bg-img img{
+        width: 482px;
+        object-fit: cover;
+    }
+}
+
+
+@media (max-width:768px) {
+    #login-body .bg-img{
+        display: none;
+    }
+}
+
+
+@media (max-width:425px) {
+    #login-body .bg-img{
+        display: none;
+    }
+    #login-body  #login-section {
+        margin: 100px auto auto auto;
+        max-width: 300px;
+    }
+    #login-body  #login-section h1 {
+        font-size: 24px;
+        margin-bottom: 9px;
+    }
+
+    #login-body  #login-section p#h1-subtext {
+        font-size: 12px;
+        color: #A7A7AF;
+        margin-bottom: 24px;
+    }
+
+    #login-body  #login-section input {
+        padding: 12px;
+        height: 48px;
+        font-size: 13px;
+        border-radius: 8px;
+        margin-bottom: 12px;
+    }
+    #login-body  p{
+        font-size:12px;
+    }
+    #login-body  #login-google{
+        padding: 6px 32px;
+        gap:33px;
+        margin-bottom: 12px;
+    }
+    #login-body  #login-fb{
+        padding: 6px 32px;
+        gap:33px;
+        margin-bottom: 12px;
+    }
+    #login-body  button{
+        padding: 8px 0;
+        font-size: 13px;
+        margin-top: 6px;
+    }
+    #login-body  #signup-text {
+        margin-top: 15px;
+        font-size: 12px;
+    }
+}

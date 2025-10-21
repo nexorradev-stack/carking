@@ -1,0 +1,187 @@
+.custom-btn {
+    height: 56px;
+    width: 150px;
+    color: #ffffff;
+    background-color: #000;
+    border: none;
+    outline: none;
+    border-radius: 12px;
+    font-size: 18px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+}
+.custom-btn:hover {
+    background-color: black;
+    color: #ffffff;
+}
+.custom-btn-edit, .custom-btn-delete {
+    height: 40px;
+    width: 110px;
+    color: #ffffff;
+    background-color: #000;
+    border: none;
+    outline: none;
+    border-radius: 12px;
+    font-size: 18px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    margin-right: 10px;
+}
+.custom-btn-sm {
+    height: 32px;
+    width: 140px;
+    color: #ffffff;
+    background-color: #000;
+    border: none;
+    outline: none;
+    border-radius: 12px;
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    margin-right: 10px;
+}
+.custom-btn-add-topic {
+    height: 36px;
+    width: 100%;
+    color: #ffffff;
+    background-color: #000;
+    border: none;
+    outline: none;
+    border-radius: 12px;
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    margin-right: 10px;
+}
+.custom-btn-sm-rep{
+    height: 32px;
+    width: 60px;
+    color: #ffffff;
+    background-color: #000;
+    border: none;
+    outline: none;
+    border-radius: 12px;
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    margin-right: 10px;
+}
+.action-buttons-rep {
+    display: flex;            /* Use flexbox to align items horizontally */
+    gap: 10px;                /* Adds space between the buttons */
+    justify-content: start;   /* Aligns buttons to the left (you can change to 'center' if needed) */
+}
+.post-actions {
+    display: flex; 
+    justify-content: start;
+    gap: 10px;
+}
+.custom-btn-edit i, .custom-btn-delete i {
+    margin-right: 8px; /* Adds space between the icon and the text */
+}
+
+
+.edit-btn{
+    color: black;
+}
+.edit-btn:hover{
+    color: black;
+}
+.delete-btn{
+    border: none;
+    background-color: transparent;
+    margin-left: 10px;
+}
+.form-control{
+    border-radius: 12px !important;
+}
+.form-control:focus {
+    border: 2.5px solid;
+    border-color: #000000 !important; 
+    box-shadow: none !important;
+}
+
+.form-check-input:checked{
+    background-color: #39cb15 !important;
+    border-color: #39cb15 !important;
+}
+
+.swal2-styled.swal2-confirm{
+    background-color: #000 !important;
+    border-color: #000 !important;
+}
+.swal2-styled {
+box-shadow: none !important;
+}
+
+
+/* .card:hover {
+    transform: scale(1.05);
+    background-color: black;
+    border-radius: 20px !important;
+    color: white;
+}
+
+.card:hover .card-body {
+    background-color: black;
+    color: white;
+}
+
+.card:hover .card-title,
+.card:hover .card-text {
+    color: white;
+} */
+
+.outer-container{
+    font-family: 'Poppins', sans-serif;
+    padding: 20px;
+    background-color: #F5F6FA;
+    width: 100%;
+    height: 100%;
+  
+}
+.inner-container{
+    background-color: #F5F6FA;
+    border-radius: 16px;
+    padding: 32px;
+}
+.heading{
+    font-size: 28px;
+    font-weight: 600;
+}
+.text-area{
+    border-radius: 16px;
+    padding: 7px;
+}
+table {
+    width: 100%;
+    border-collapse: collapse; 
+    margin: 10px 0;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+}
+

@@ -1,0 +1,171 @@
+*{
+  box-sizing: border-box;
+  padding: 0%;
+  margin: 0%;
+}
+
+.forsale_body .home .button {
+  background-color: white ; /* White background */
+  color: #A4A7AD; /* Text color */
+}
+
+.home_first{
+  font-weight: 500;
+  font-size: 18px;
+}
+.home_second{
+  font-size: 30px;
+  font-weight: 700;
+}
+.home_third{
+  font-size:20px;
+  font-weight: 700;
+}
+.second_container{
+  margin-top: 0%;
+  padding-top: 0%;
+}
+
+.forsale_body{
+  background-color: #F5F6FA;
+}
+.forsale_body > .row:first-of-type {
+  width: 90%;
+  margin: auto;
+
+}
+.forsale_body .column1{
+
+
+  border-radius: 10px;
+}
+.forsale_body .column1 button{
+  border-radius: 12px;
+  padding: 10px;
+
+}
+.image-container-forSale{
+  height: 10rem;
+  width: 100%;
+}
+.image-container-forSale img{
+    width: 100%;
+    height: 100%;
+}
+
+.search_color{
+font-weight: 400;
+}
+
+.skin_color{
+  background-color: #F5F6FA;
+  border: none !important;
+  border-radius: 12px !important;
+  text-align: start !important;
+
+}
+.white_color{
+  background-color: white;
+  border-radius: 8px;
+  font-size: small;
+  color: #344054;
+}
+
+.forsale_body .range-inputs {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px; /* Adjusted margin */
+}
+
+.forsale_body input[type="text"] {
+  width: 48%;
+  text-align: center;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* Styles for the range input */
+.forsale_body input[type="range"] {
+  -webkit-appearance: none; /* Remove default styling */
+  appearance: none; /* Remove default styling */
+  position: absolute;
+  top: 0; /* Adjust position */
+  z-index: 1;
+  width: 100%; /* Full width */
+}
+
+/* Track styles */
+.forsale_body input[type="range"]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 6px; /* Reduced height */
+  background:  #F5F6FA;
+
+}
+
+.forsale_body input[type="range"]::-moz-range-track {
+  width: 100%;
+  height: 6px; /* Reduced height */
+  background:  #F5F6FA;
+
+}
+
+/* Thumb styles */
+.forsale_body input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Remove default styling */
+  appearance: none; /* Remove default styling */
+  width: 25px;
+  height: 25px;
+  background: #1A1A1A;
+  cursor: pointer;
+  border-radius: 50%;
+  position: relative; /* Adjust position */
+  top: -8px; /* Align with the track */
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.3); /* Optional shadow for better visibility */
+}
+
+.forsale_body input[type="range"]::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  background: #1A1A1A;
+  cursor: pointer;
+  border-radius: 50%;
+  position: relative; /* Adjust position */
+  top: -8px; /* Align with the track */
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.3); /* Optional shadow for better visibility */
+}
+
+/* Styles for the slider container */
+.forsale_body .slider-outer {
+  position: relative;
+  width: 100%;
+  height: 6px; /* Height of the slider track */
+  margin-top: 10px; /* Adjusted space between input and slider */
+}
+
+/* Style for the left slider */
+.forsale_body #minSlider {
+  width: 50%; /* Set width to 50% */
+  z-index: 2; /* Bring this slider above the track */
+}
+
+/* Style for the right slider */
+.forsale_body #maxSlider {
+  width: 50%; /* Set width to 50% */
+  z-index: 1; /* Place this slider below the track */
+  position: absolute;
+  right: 0; /* Align to the right */
+}
+
+/* Custom styles for the dropdown button */
+.transparent_bg .btn.dropdown-toggle {
+  background-color: transparent; /* Transparent background */
+  border: none; /* No border */
+  border-bottom: 1px solid hsl(0, 0%, 0%,0.1); /* Bottom border */
+  color: black; /* Text color */
+}
+
+/* Hover effect for bottom border */
+.transparent_bg .btn.dropdown-toggle:hover {
+  border-bottom: 2px solid hsl(0, 0%, 0%,0.8); /* Change bottom border color on hover */
+}
+

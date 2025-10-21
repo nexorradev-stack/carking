@@ -1,0 +1,126 @@
+.grid-for-car-cards{
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 300px)) !important; 
+    column-gap: 1.5rem !important;
+    row-gap: 0rem !important;
+    justify-content: start;
+}
+.grid-for-car-cards > .car-card {
+    max-width: 400px; /* Adjust this value to your desired maximum card width */
+    width: 100%; /* Ensures the card takes the full width of its grid column, up to max-width */
+}
+@media only screen and (max-width:600px){
+    .grid-for-car-cards{
+        grid-template-columns: repeat(auto-fit, minmax(255px, 1fr)) !important; 
+    }
+}
+.main_car_card{
+    border: none; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    border-radius: 8px;
+    overflow: hidden;
+}
+.car_card_main_img{
+    overflow: hidden; 
+    height: 191px; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    background-color: inherit; 
+    position: relative;
+}
+.car_card_inner_img{
+    position: relative; 
+    width: 100%; height: 100%; 
+    border-radius: 10px 10px 0 0; 
+    overflow: hidden;
+}
+.car_card_background_img{
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%;     
+    background-size: cover; 
+    filter: blur(10px);
+}
+.car_card_front_img{
+    position: relative; 
+    width: 100%; 
+    height: 100%; 
+    object-position: center; 
+    z-index: 2;
+}
+.default_car_img{
+    width: 100%; 
+    height: 100%; 
+    object-fit: contain; 
+    object-position: center;
+}
+.car_tittle {
+    font-family: 'Manrope', sans-serif;
+    text-align: left;
+    font-weight: 700;
+    font-size: 15px;
+    margin-bottom: 0px;
+}
+.car_varient {
+    font-family: 'Manrope', sans-serif;
+    color: #787E8D;
+    text-align: left;
+    font-weight: 500;
+    font-size: 13px;
+    margin-top: 0px;
+    margin-bottom: 10px;
+}
+.car_detail{
+    display:flex; 
+    gap:10px;
+}
+.car_detail_type{
+    display: flex;
+    justify-content: start;
+    align-items: start;
+    background-color:#ebebeb; 
+    color:white; 
+    width:fit-content; 
+    border-radius:5px;
+}
+.car_detail_type_text {
+    font-family: 'Manrope', sans-serif;
+    color: black;
+    text-align: left;
+    font-weight: 600;
+    font-size: 12px;
+    margin:4px;
+    letter-spacing: 1px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+@media (max-width: 576px) {
+    .car_detail_type_text {
+        letter-spacing: normal;
+    }
+}
+.height{
+    height: 10px;
+}
+.car_detail_bottom{
+    display:flex; 
+    justify-content:space-between;
+    gap: 10px;
+}
+.car_price {
+    font-family: 'Manrope', sans-serif;
+    text-align: left;
+    font-weight: 700;
+    font-size: 15px;
+    margin-bottom: 0px;
+    margin-top:2px;
+}
+.car_location{
+    color: #787E8D;
+    margin: 0px; 
+    padding:0px;
+}

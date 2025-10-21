@@ -1,0 +1,143 @@
+
+*{
+  box-sizing: border-box;
+}
+.sixth_container .row,.seventh_container .row {
+  margin: 0; /* Removes default margin that might cause overflow */
+}
+
+
+.sixth_h1{
+  font-size: 40px;
+  font-weight: 400;
+}
+.sixth_card{
+background-color: white;
+border-radius: 10px;
+padding: 0;
+}
+.calendar_icon{
+  width: 20px;
+  height: 20px;
+}
+.sixth_h5{
+  font-size: 20px;
+  font-weight: 300;
+}
+.sixth_date{
+  color:#000000;
+}
+.sixth_container .card-title{
+  font-size: 30px;
+}
+.sixth_container .card-text{
+  font-size: 16px;
+  font-weight: 300;
+}
+/* seventh container  */
+.seventh_container h1{
+  width: 80%;
+ font-size: 45px;
+ font-weight: 600;
+}
+.seventh_container p{
+  width: 80%;
+  font-size: 17px;
+  font-weight: 300;
+}
+.seventh_container .btn{
+  border-radius: 12px;
+  padding: 12px 50px 12px 50px;
+  width: 40%;
+}
+.img-div-seventh_container{
+    position: relative;
+    height: 100%;
+}
+.img-div-seventh_container .img-1{
+    position: absolute;
+    height: 110%;
+    width: 80%;
+    border-radius: 30px;
+}
+.img-div-seventh_container .img-2 {
+    transform: rotate(-18deg);
+    width: 30%;
+    height: 200px;
+    border-radius: 20px;
+    right: 10%;
+    top: 27%;
+    border-color: white;
+    border-width: 5px;
+    border-style: solid;
+    position: absolute;
+}
+.below_seventh_container{
+  background-color: #F5F6FA;
+  width: 100%;
+  padding: 65px 0 65px 0;
+}
+.below_seventh_container .row{
+  width: 90%;
+
+}
+.below_seventh_container p{
+  padding-top: 5px;
+  font-weight: 500;
+  color: #767C8C;
+}
+
+@media (max-width:999px) {
+  .sixth_container{
+    background-size: cover;
+  }
+  .img-div-seventh_container{
+    display: none;
+    }
+  .seventh_container .row > :nth-child(2) {
+    /* border: 3px solid black; */
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    margin: auto;
+    text-align: center;
+  }
+
+
+}
+@media (max-width:576px) {
+
+    .img-div-seventh_container{
+        display: none;
+    }
+   .seventh_container .row > :nth-child(2) {
+     padding: 0% !important;
+     text-align: center;
+     width: 100%;
+     margin: auto;
+   }
+   .seventh_container h1{
+    padding-left: 5px;
+    width: 100%;
+    /* border: 1px solid black; */
+   font-size: 8vw;
+  }
+  .seventh_container p{
+    width: 95%;
+    font-size: 15px;
+
+  }
+  .seventh_container .btn{
+    border-radius: 12px;
+    padding: 12px 50px 12px 50px;
+    width: 100%;
+  }
+}
+@media (min-width:1440px) {
+  .sixth_container{
+    background-image: url("../assets/latest_post_bg2.png");
+  }
+}
+
+
+

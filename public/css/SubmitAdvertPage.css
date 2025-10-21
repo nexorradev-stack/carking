@@ -1,0 +1,115 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Manrope:wght@200..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.SubmitAdvertPage{
+    width: 100%;
+}
+.SubmitAdvertPage #outer-container{
+    font-family: 'Poppins', sans-serif;
+    padding: 32px;
+    background-color: #F5F6FA;
+    max-width: 100%;
+}
+.SubmitAdvertPage h1{
+    font-weight: 600;
+    font-size: 28px;
+    margin-bottom: 12px;
+}
+.fetch-Car-form{
+    background-color: white;
+    padding: 12px;
+    border-radius: 12px;
+}
+
+
+input, textarea, select {
+    box-shadow: 0 1px 3px 0 #cfd7df !important;
+    border-color: #ffffff !important; 
+    outline: none !important;
+    border-radius: 12px !important;
+}
+input:focus, textarea:focus, select:focus {
+    box-shadow: 0 1px 3px 0 #cfd7df !important;
+    border-color: #ffffff !important; 
+    outline: none !important;
+    border-radius: 12px !important;
+}
+/* .SubmitAdvertPage #inner-container{
+    background-color: #fff;
+    border-radius: 16px;
+    padding-top: 40px;
+    padding-left:303px;
+    height: 827px;
+    padding-right:303px;
+} */
+/* .SubmitAdvertPage #inner-container h2{
+    font-size: 19px;
+    margin-bottom: 12px;
+}
+.SubmitAdvertPage #inner-container p{
+    font-size: 16px;
+    color: #8D98AF;
+    font-weight: 500;
+    margin-bottom: 32px;
+} */
+.input-label-fields{
+    display: flex;
+    gap: 24px;
+}
+@media screen and (max-width: 767px) {
+    .input-label-fields{
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+}
+.SubmitAdvertPage .input-group{
+    display: flex;
+    flex-direction: column;
+    /* margin-bottom: 24px; */
+}
+
+.SubmitAdvertPage .input-group input{
+    height: 45px;
+    padding-left: 16px;
+    border: 1px solid #F2F2F2;
+    border-radius: 12px;
+}
+
+.SubmitAdvertPage .input-group input::placeholder{
+    font-size: 14px;
+    color: #a1a1a1;
+}
+.SubmitAdvertPage #btn-container{
+    display: flex;
+    justify-content: flex-end;
+}
+.SubmitAdvertPage #btn-container button{
+    /* height: 56px;
+    width: 186px;
+    color: #fff;
+    background-color: #000;
+    border: none;
+    outline: none;
+    border-radius: 12px;
+    font-size: 18px;
+    cursor: pointer; */
+
+
+    height: 56px;
+    width: 144px;
+    color: #ffffff;
+    background-color: #000;
+    border: none;
+    outline: none;
+    border-radius: 12px;
+    font-size: 18px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+}

@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
+.ForumDetails {
+    font-family: 'Manrope', sans-serif;
+    background-color: #ffffff;
+}
+
+.ForumDetails .btn-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+    width: fit-content;
+    margin: auto;
+    background-color: #e2e6ea;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+}
+
+.ForumDetails .btn-custom {
+    background-color: transparent;
+    color: #6c757d;
+    border: none;
+    font-weight: 500 !important;
+    border-radius: 0.5rem;
+    padding: 0.5rem 1rem;
+    text-align: center;
+}
+
+.ForumDetails .btn-custom.active {
+    background-color: #000;
+    font-weight: 500 !important;
+    color: #fff;
+}
+
+.ForumDetails .forum-content {
+    padding: 1rem;
+    border-radius: 0.5rem;
+    margin-top: 1rem;
+}
+
+.ForumDetails .forum-category {
+    background-color: #e8e8e8;
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+    font-weight: bold;
+}
+
+.ForumDetails .forum-item {
+    background-color: #f5f6fa;
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.ForumDetails .icon {
+    font-size: 1.2rem;
+    margin-right: 0.5rem;
+    color: #6c757d;
+}
+.ForumDetails .text-muted{
+    font-weight: 500 !important;
+}
+@media (max-width: 450px) {
+    .ForumDetails .btn-custom {
+        width: calc(50% - 0.5rem);
+    }
+}
+
+@media (max-width: 375px) {
+    .ForumDetails .btn-custom {
+        width: calc(50% - 0.5rem);
+    }
+}
+
+@media (max-width: 320px) {
+    .ForumDetails .btn-custom {
+        width: calc(50% - 0.5rem);
+    }
+    .ForumDetails .forum-content {
+        padding: 0.75rem;
+    }
+    .ForumDetails .forum-item .d-flex {
+        gap: 0.5rem;
+    }
+    .ForumDetails .text-muted.ms-3 {
+        margin-left: 0.25rem;
+        margin-right: 0.25rem;
+        white-space: nowrap;
+    }
+}

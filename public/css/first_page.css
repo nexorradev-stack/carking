@@ -1,0 +1,232 @@
+r
+
+*{
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+
+
+}
+
+.first_container{
+  width: 90%;
+  margin: 0;padding: 0;
+}
+
+.nav-item:hover{
+  border-bottom: 1px solid rgb(0, 0, 0,0.5);
+}
+.first_body{
+width: 90%;
+margin: auto;
+position: relative;
+overflow: hidden;
+border-bottom-left-radius: 60px;
+border-bottom-right-radius: 60px;
+/* border-radius: 60px; */
+/* padding-bottom: 50px; */
+
+transform: scale(0.9); 
+transform-origin: top center; 
+}
+
+
+
+.badge{
+position: absolute;
+left: 54%;
+}
+.badge img{
+height: 30vw;
+}
+
+/* .first_car{
+position: absolute;
+top:12%;
+left: 50%;
+} */
+.first_car-1{
+display: none;
+}
+.first_h1{
+font-weight:700;
+padding:0 50px 0 50px;
+font-size: 36px;
+}
+.first_btn{
+  padding: 10px 30px 10px 30px;
+}
+.first_search{
+background-color: white;
+width: 90%;
+/* margin:30px auto 0 auto; */
+z-index: 10;
+border-radius: 30px;
+}
+/* .first_search .dropdown{
+  padding: 50px auto 50px auto !important;
+} */
+.search_color{
+  background-color: #F5F6FA;
+}
+.search_btn{
+  padding-top: 10px;
+  display: flex;
+  justify-content: center;
+}
+.search_btn div{
+ width: 20%;
+
+}
+/* .Search-button{
+    display: flex;
+    justify-content: centetr;
+    align-items: center;
+    width: 100%;
+    background-color: red;
+} */
+
+@media (min-width:1000px) {
+
+ .first_body{
+  /* background-color: #F5F6FA; */
+
+  /* padding-bottom: 40px; */
+  
+ }
+ /* .first_car img{
+  height:17vw;
+ } */
+
+ .first_h1{
+  font-size: 36px;
+  width: 100%;
+  padding:60px 55% 0 60px;
+
+  }
+  .first_p{
+    font-size: 17px;
+    padding-left: 60px;
+    width: 30%;
+  }
+  .first_btn{
+    margin-left:60px;
+  }
+  .first_btn2_div .first_btn{
+    border-radius: 10px;
+    margin-left: 60px;
+    width: 25%;
+
+  }
+  .first_search{
+    /* margin:15vh auto 0 auto; */
+    margin:0 auto 0 auto;
+  }
+  .sixth_container .sixth_card{
+    width: 20rem;
+
+}
+.first_btn2_div{
+  min-width: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+}
+
+@media (max-width:999px) {
+
+   .badge{
+
+    left: 40%;
+    }
+   .badge img{
+    display: none;
+    height: 40vw;
+    }
+    .first_car{
+      display: none;
+    }
+    .first_car-1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    }
+    .first_car-1 img{
+        height: 18vh;
+        width: 70vw;
+        border-radius: 10px;
+    }
+     .first_h1{
+      width: 80%;
+      margin: auto;
+      font-size: 32px;
+      text-align: center;
+      padding:0 0 0 0;
+      }
+     .first_p{
+
+      text-align: center;
+      width: 91%;
+      margin: auto;
+      padding:10px 0 0 0;
+    }
+    .first_btn_div{
+      padding: 20px 0 0 0;
+      margin: auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .search_btn div{
+      width: 25%;
+
+     }
+
+}
+@media (max-width:576px){
+ .first_body{
+
+  background-color:white;
+ }
+ .first_h1{
+
+  font-size: 22px;
+  padding:20px 0 0 0;
+  }
+  .first_p{
+
+    padding: 10px 15px 0 15px;
+   font-size: 16px;
+  }
+  .first_btn_div{
+    width: 100%;
+    margin: auto;
+    padding-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .first_btn{
+    padding: 5px 0 5px 0;
+    width: 90%;
+  }
+  .search_btn div{
+    width: 100%;
+   }
+   .search_color{
+    width: 100%;
+   }
+
+}
+@media (min-width: 577px) {
+  .first_btn2_div div{
+          min-width: 160px;
+  }
+  }
+@media (max-width: 385px) {
+    .search_color{
+        width: 120%;
+       }
+  }

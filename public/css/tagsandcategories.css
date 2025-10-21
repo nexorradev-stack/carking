@@ -1,0 +1,103 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#TandC-outer-container {
+    padding: 32px;
+    font-family: 'Manrope', sans-serif;
+    max-width: 1188px;
+    height: 100%;
+    background-color: #F5F6FA;
+}
+
+#TandC-outer-container h2 {
+    font-family: 'Manrope', sans-serif;
+    font-weight: 800;
+    font-size: 28px;
+    margin-bottom: 24px;
+}
+
+#TandC-outer-container #TandC-container {
+    background-color: #fff;
+    width: 100%;
+    height: 827px;
+    font-family: 'Manrope', sans-serif;
+    border-radius: 16px;
+    /* height: auto; */
+}
+
+#TandC-outer-container #TandC-contents {
+    width: 538px;
+    margin: 0 auto;
+    padding: 32px;
+}
+
+#TandC-outer-container #TandC-contents h3 {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 600;
+    margin-bottom: 24px;
+    font-size: 19.63px;
+}
+
+#TandC-outer-container #TandC-contents #tags-container, #TandC-contents #categories-container {
+    margin-bottom: 32px;
+}
+
+#TandC-outer-container #tags, #categories {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+#TandC-outer-container .tag-option, .cat-option {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    padding: 8px 16px;
+    height: 32px;
+    background-color: #E8E8E8;
+    color: #3E3E3E;
+    border-radius: 50px;
+    cursor: pointer;
+}
+
+#TandC-outer-container #add-tag, #add-cat {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    padding: 8px 16px;
+    height: 32px;
+    border: 1px solid #000;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+#TandC-outer-container #add-tag.editing, #add-cat.editing {
+    border: 1px solid #E8E8E8;
+    background-color: #fff;
+    gap: 0;
+    padding: 0;
+}
+
+#TandC-outer-container #add-tag input, #add-cat input {
+    border: 1px solid #E8E8E8;
+    outline: none;
+    width: auto;
+    max-width: 100%;
+    font-family: 'Manrope', sans-serif;
+    color: #3E3E3E;
+    padding: 8px 16px;
+    border-radius: 50px;
+}
+
+#TandC-outer-container #error-icon {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background: url('assets/cross.svg') no-repeat center center;
+    background-size: contain;
+    cursor: pointer;
+}
